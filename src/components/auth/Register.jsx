@@ -19,7 +19,7 @@ function Register() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('/api/users/register')
+    axios.get(`${API_URL}/api/users/register`)
       .then(response => {
         if (response.data.isAuthenticated) {
           navigate('/login');
@@ -61,7 +61,7 @@ function Register() {
 
     if (validateForm()) {
       setLoading(true); // Set loading to true when the process starts
-      axios.post('${API_URL}/api/users/register', { name, email, password })
+      axios.post(`${API_URL}/api/users/register`, { name, email, password })
         .then(response => {
           console.log("register done", response);
           toast.success('Registration successful! Redirecting to login...', {
