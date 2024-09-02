@@ -4,6 +4,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from '../components/context/AuthContext'; // Adjust the path as needed
 
+const API_URL = "https://todo-back-production-eb45.up.railway.app";
+
 function NewTodo() {
   const [description, setDescription] = useState('');
   const { user } = useAuth(); // Get user details from AuthContext
@@ -16,7 +18,7 @@ function NewTodo() {
       return;
     }
 console.log(user.userId)
-    axios.post(`/api/todos/user/${user.id}`, { description })
+    axios.post(`${API_URL}/api/todos/user/${user.id}`, { description })
       .then(response => {
         toast.success('Todo created successfully');
         setTimeout(() => {
