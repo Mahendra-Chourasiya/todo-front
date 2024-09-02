@@ -5,6 +5,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from '../Loader'; // Import the Loader component
 
+const API_URL = "https://todo-back-production-eb45.up.railway.app";
+
 function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -59,7 +61,7 @@ function Register() {
 
     if (validateForm()) {
       setLoading(true); // Set loading to true when the process starts
-      axios.post('/api/users/register', { name, email, password })
+      axios.post('${API_URL}/api/users/register', { name, email, password })
         .then(response => {
           console.log("register done", response);
           toast.success('Registration successful! Redirecting to login...', {
