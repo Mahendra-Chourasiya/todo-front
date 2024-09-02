@@ -5,6 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from './context/AuthContext'; // Update the path as needed
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = "https://todo-back-production-eb45.up.railway.app";
+
 function Index() {
   const { user } = useAuth(); // Get user info from context
   const [todos, setTodos] = useState([]);
@@ -19,7 +21,7 @@ function Index() {
     console.log("User:", user);
     console.log("Fetching todos for user ID:", user.id);
     // Fetch todos for the logged-in user
-    axios.get(`/api/todos/user/${user.id}`)
+    axios.get(`${API_URL}/api/todos/user/${user.id}`)
       .then(response => {
         setTodos(response.data);
         console.log("Todos received:", response.data);
@@ -31,7 +33,7 @@ function Index() {
   }, [user, navigate]);
 
   const handleDelete = (id) => {
-    axios.delete(`/api/todos/${id}`)
+    axios.delete(`${API_URL}/api/todos/${id}`)
       .then(() => {
         setTodos(todos.filter(todo => todo.id !== id));
         toast.success('Todo deleted successfully');
