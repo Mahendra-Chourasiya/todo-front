@@ -6,6 +6,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { TailSpin } from 'react-loader-spinner';
 
+const API_URL = "https://todo-back-production-eb45.up.railway.app";
+
 function Login() {
   const { login } = useAuth();
   const [email, setEmail] = useState('');
@@ -19,7 +21,7 @@ function Login() {
     setLoading(true); // Start loading
 
     try {
-      const response = await axios.post('/api/users/login', {
+      const response = await axios.post('${API_URL}/api/users/login', {
         email,
         password
       }, {
