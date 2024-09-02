@@ -21,7 +21,7 @@ function Login() {
     setLoading(true); // Start loading
 
     try {
-      const response = await axios.post('${API_URL}/api/users/login', {
+      const response = await axios.post(`${API_URL}/api/users/login`, {
         email,
         password
       }, {
