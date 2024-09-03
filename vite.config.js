@@ -40,7 +40,7 @@ export default defineConfig(({ mode }) => {
     },
     define: {
       // Environment variables can be set here
-      'process.env.API_BASE_URL': JSON.stringify(mode === 'development' 
+      'process.env.API_URL': JSON.stringify(mode === 'development' 
         ? 'https://todo-back-production-eb45.up.railway.app/' 
         : 'https://your-production-backend-url.com/'),
     },
